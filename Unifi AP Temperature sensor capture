@@ -1,0 +1,5 @@
+# grok pattern to extract temperature out of wifi access point sensors
+# use named captures only
+
+
+^(?:<%{POSINT:priority}>)?(?<timestamp>\w+ +\d+ +\d+:\d+:\d+) %{WORD:device_model} %{GREEDYDATA}:.*Sensor %{WORD:wifi_interface} temp: %{NUMBER:wifi_temp}°C
