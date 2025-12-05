@@ -1,0 +1,6 @@
+# parsing the basic stuff from the syslog comming over Syslog UDP from Unify Gateway
+# import as grok pattern, over the Input you configured for the Syslog UDP
+# it will process new logs, not the old ones. you can now search based on the now parsed items
+
+
+^(?:<%{POSINT:priority}>%{SYSLOGTIMESTAMP:timestamp} )?%{HOSTNAME:device_name} \[%{NOTSPACE:rule_prefix}\] DESCR=%{QUOTEDSTRING:description} IN=%{NOTSPACE:in_interface} OUT=%{NOTSPACE:out_interface} MAC=%{NOTSPACE:mac_address} SRC=%{IPV4:src_ip} DST=%{IPV4:dst_ip} LEN=%{POSINT:packet_length} TOS=%{NOTSPACE:tos} PREC=%{NOTSPACE:prec} TTL=%{POSINT:ttl} ID=%{POSINT:id} (?:DF )?PROTO=%{WORD:protocol} SPT=%{POSINT:src_port} DPT=%{POSINT:dst_port}
