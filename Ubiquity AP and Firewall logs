@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "GPT5 Ubiquiti Combined Full Logs",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "^(?:<%{POSINT:priority}>)?(?<timestamp>\\w+ +\\d+ +\\d+:\\d+:\\d+) %{WORD:device_model} (?:\"?%{DATA:device_id}\"?,)?%{DATA:firmware_version}?:? ?%{WORD:process}\\[%{INT:process_id}\\]: (?:%{GREEDYDATA:pre_msg})?(?:(?:IN=%{NOTSPACE:in_interface} OUT=%{NOTSPACE:out_interface} SRC=%{IPV4:src_ip} DST=%{IPV4:dst_ip} LEN=%{POSINT:packet_length} TOS=%{NOTSPACE:tos} PREC=%{NOTSPACE:prec} TTL=%{POSINT:ttl} ID=%{POSINT:id} (?:DF )?PROTO=%{WORD:protocol}(?: SPT=%{POSINT:src_port} DPT=%{POSINT:dst_port})? )|(?:hostapd: %{NOTSPACE:wlan_interface}: STA %{MAC:client_mac} IEEE 802\\.11: %{WORD:event}(?: (?:on|to) %{GREEDYDATA:client_info})?)|(?:dhcpd: DHCPACK on %{IPV4:client_ip} to %{MAC:client_mac})|(?:Sensor %{WORD:wifi_interface} temp: %{NUMBER:wifi_temp}°C(?: FAN=%{NUMBER:fan_speed})?))?(?: %{GREEDYDATA:extra})?$"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "5.0.7"
+}
