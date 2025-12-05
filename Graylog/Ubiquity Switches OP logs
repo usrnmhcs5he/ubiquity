@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "GPT5 Ubiquiti Switch Operational Logs",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 2,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "^(?:<%{POSINT:priority}>)?(?<timestamp>\\w+ +\\d+ +\\d+:\\d+:\\d+) %{WORD:device_model}(?: %{DATA:device_id})?: %{WORD:process}\\[%{INT:pid}\\]: (?:(?:PoE:? %{WORD:poe_status} on port %{INT:poe_port}(?: \\(%{DATA:poe_detail}\\))?)|(?:port %{INT:port_number} %{WORD:port_event})|(?:restarting device)|(?:system watchdog %{WORD:watchdog_event})|(?:firmware upgrade to %{DATA:firmware_version})|(?:%{GREEDYDATA:operational_message}))$"
+      },
+      "condition_type": "regex",
+      "condition_value": "U?SW|Switch|USW"
+    }
+  ],
+  "version": "5.0.7"
+}
