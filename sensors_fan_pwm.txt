@@ -1,0 +1,5 @@
+echo 115 > /sys/class/hwmon/hwmon0/pwm1
+
+sensors
+
+
