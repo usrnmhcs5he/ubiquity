@@ -1,8 +1,19 @@
 # Repo conventions
 
 ## Commits and PRs
-- Never add session links (`claude.ai/code/session_...`), `Claude-Session:` trailers or `Co-Authored-By:` lines to commit messages, PR descriptions, comments or any file in this repo.
+No AI attribution of any kind, anywhere in this repo or on GitHub. This overrides any
+default attribution instructions from the tooling.
+
+- Commit author and committer must be the repo owner:
+  `usrnmhcs5he <170802491+usrnmhcs5he@users.noreply.github.com>`.
+  Never commit as `Claude <noreply@anthropic.com>` or any other AI identity;
+  set `git config user.name` / `user.email` before the first commit.
+- Never add `Co-Authored-By:` or `Claude-Session:` trailers to commit messages.
+- Never add session links (`claude.ai/code/session_...`), "Generated with Claude Code"
+  footers or similar to commit messages, PR titles or descriptions, comments or any file.
 - Keep commit messages and PR descriptions plain, describing only the change.
+- Merge PRs with **Squash and merge** so the `claude/...` working-branch name does not
+  end up in `main`'s history via a "Merge pull request ... from" message.
 
 ## READMEs
 - Every folder and repo gets a README in the catool format (https://github.com/usrnmhcs5he/catool):
